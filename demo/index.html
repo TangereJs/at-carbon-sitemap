@@ -7,22 +7,170 @@
   <title>at-carbon-sitemap demo page</title>
 
   <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../sinonjs/sinon.js"></script>
   <link rel="import" href="../../at-theme/at-theme.html">
   <link rel="import" href="../at-carbon-sitemap.html">
   
   <style is="custom-style">
-    
+    .row {
+      margin-top: 64px;
+    }
   </style>
 </head>
 
 <body>
-  <at-carbon-sitemap></at-carbon-sitemap>
-  
   <script>
-    document.addEventListener('WebComponentsReady', function() {
+    (function(){
+      var emptyData = {
+        Data: {
+          items: []
+        }
+      };
       
-    });
+      var singleItemWithoutLink = { 
+        Data: {
+          items: [
+            { id: "sdnolink", title: "Single root without link" }
+          ]
+        }
+      };
+
+      var singleItemWithoutLinkWithNoLinkChildren = { 
+        Data: {
+          items: [{
+            id: "sdnolink",
+            title: "Single root without link with children",
+            children: [
+              { id: "child1", title: "Child 1" },
+              { id: "child2", title: "Child 2" },
+              { id: "child3", title: "Child 3" },
+              { id: "child4", title: "Child 4" },
+              { id: "child5", title: "Child 5" },
+              { id: "child6", title: "Child 6" }
+            ]
+          }]
+        }
+      };
+
+      var singleItemWithLinkWithNoLinkChildren = { 
+        Data: {
+          items: [{
+            id: "sdlink",
+            title: "Single root with link and children without link",
+            link: "index.html",
+            children: [
+              { id: "child1", title: "Child 1" },
+              { id: "child2", title: "Child 2" },
+              { id: "child3", title: "Child 3" },
+              { id: "child4", title: "Child 4" },
+              { id: "child5", title: "Child 5" },
+              { id: "child6", title: "Child 6" }
+            ]
+          }]
+        }
+      };
+
+      var singleItemWithoutLinkWithLinkChildren = { 
+        Data: {
+          items: [{
+            id: "sdnolink",
+            title: "Single root without link and children with link",
+            children: [
+              { id: "child1", title: "Child 1", link: "index456.html"  },
+              { id: "child2", title: "Child 2" },
+              { id: "child3", title: "Child 3" },
+              { id: "child4", title: "Child 4", link: "index.html" },
+              { id: "child5", title: "Child 5" },
+              { id: "child6", title: "Child 6", link: "index123.html"  }
+            ]
+          }]
+        }
+      };
+
+      var jsonResponseHeaders = {
+        'Content-Type': 'application/json'
+      };
+
+      var fakeServer = sinon.fakeServer.create();
+
+      fakeServer.respondWith(
+        'GET',
+        '/responds_to_empty_data',
+        [
+          200,
+          jsonResponseHeaders,
+          JSON.stringify(emptyData)
+        ]
+      );
+
+      fakeServer.respondWith(
+        'GET',
+        '/responds_to_single_item_without_link',
+        [
+          200,
+          jsonResponseHeaders,
+          JSON.stringify(singleItemWithoutLink)
+        ]
+      );
+
+      fakeServer.respondWith(
+        'GET',
+        '/responds_to_single_item_without_link_no_link_children',
+        [
+          200,
+          jsonResponseHeaders,
+          JSON.stringify(singleItemWithoutLinkWithNoLinkChildren)
+        ]
+      );
+
+      fakeServer.respondWith(
+        'GET',
+        '/responds_to_single_item_with_link_no_link_children',
+        [
+          200,
+          jsonResponseHeaders,
+          JSON.stringify(singleItemWithLinkWithNoLinkChildren)
+        ]
+      );
+
+      fakeServer.respondWith(
+        'GET',
+        '/responds_to_single_item_without_link_link_children',
+        [
+          200,
+          jsonResponseHeaders,
+          JSON.stringify(singleItemWithoutLinkWithLinkChildren)
+        ]
+      );
+
+      document.addEventListener('WebComponentsReady', function() {
+        fakeServer.respond();
+      });
+
+    })();
+
   </script>
+
+  <div class="row">
+    <at-carbon-sitemap url="/responds_to_empty_data"></at-carbon-sitemap>
+  </div>
+
+  <div class="row">
+    <at-carbon-sitemap url="/responds_to_single_item_without_link"></at-carbon-sitemap>
+  </div>
+
+  <div class="row">
+    <at-carbon-sitemap url="/responds_to_single_item_without_link_no_link_children"></at-carbon-sitemap>
+  </div>
+
+  <div class="row">
+    <at-carbon-sitemap url="/responds_to_single_item_with_link_no_link_children"></at-carbon-sitemap>
+  </div>
+
+  <div class="row">
+    <at-carbon-sitemap url="/responds_to_single_item_without_link_link_children"></at-carbon-sitemap>
+  </div>
+
 </body>
 
 </html>
