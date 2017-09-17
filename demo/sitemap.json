@@ -4,27 +4,27 @@
       {
         "id": "root1",
         "title": "First root",
-        "link": "",
+        "link": "http://www.adenin.com",
         "children": [
           { 
             "id": "r1_child1_level1", 
             "title": "Child 1 at Level 1",
-            "link": "",
+            "link": "http://www.google.com",
             "children": [
               {
                 "id": "r1_c1_child1_level2", 
                 "title": "Child 1 at Level 2",
-                "link": "index2.html"
+                "link": "/components/at-carbon-sitemap/demo/index2.html"
               },
               {
                 "id": "r1_c1_child2_level2", 
                 "title": "Child 2 at Level 2",
-                "link": ""
+                "link": "http://www.adenin.com"
               },
               {
                 "id": "r1_c1_child3_level2", 
                 "title": "Child 3 at Level 2",
-                "link": ""
+                "link": "/components/at-carbon-sitemap/demo/index2.html"
               }
             ]
           },
