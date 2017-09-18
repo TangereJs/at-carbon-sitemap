@@ -99,6 +99,12 @@
       var node = this._findNodeById(nodeId, data);
       if (!node || !node.link) return;
 
+      if (node.link.indexOf("://") > 0) {
+        // if node link is an absolute url, update the href by setting window.location.href to node.link
+        window.location.href = node.link;
+        return;
+      }
+
       var currentUrl = window.location.href;
       var currentUrlNode = this._findSelectedNodeData(data, currentUrl);
       if (currentUrlNode) { 
