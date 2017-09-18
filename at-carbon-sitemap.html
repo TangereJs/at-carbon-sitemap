@@ -62,12 +62,6 @@
       var result = this._findSelectedNodeData(receivedData, currentUrl);
       var value = result ? result.id : null;
       this.$.carbonTree.value = value;
-
-      if (!this._boundCarbonTreeValueChangedEventHanlder) {
-        this._boundCarbonTreeValueChangedEventHanlder = this._handleCarbonTreeValueChanged.bind(this)
-      }
-
-      this.$.carbonTree.addEventListener('value-changed', this._boundCarbonTreeValueChangedEventHanlder);
     },
 
     _findSelectedNodeData: function(nodes, currentUrl) {
@@ -88,52 +82,6 @@
         if (!nodeData.children || !nodeData.children.length) continue;
         
         var result = this._findSelectedNodeData(nodeData.children, currentUrl);
-        if (result) return result;
-      }
-    },
-
-    _handleCarbonTreeValueChanged: function(event) {
-      var nodeId = event.detail.value;
-      var data = this.$.carbonTree.data;
-
-      var node = this._findNodeById(nodeId, data);
-      if (!node || !node.link) return;
-
-      if (node.link.indexOf("://") > 0) {
-        // if node link is an absolute url, update the href by setting window.location.href to node.link
-        window.location.href = node.link;
-        return;
-      }
-
-      var currentUrl = window.location.href;
-      var currentUrlNode = this._findSelectedNodeData(data, currentUrl);
-      if (currentUrlNode) { 
-        // update the href by replacing the currenUrlNode.link with node.link
-        var replaceWithRegExp = new RegExp(currentUrlNode.link + "$");
-        currentUrl = currentUrl.replace(replaceWithRegExp, node.link);
-        window.location.href = currentUrl;
-
-      } else {
-        // update the href by setting window.location.href to node.link
-        window.location.href = node.link;
-      }
-    },
-
-    _findNodeById: function(nodeId, data) {
-
-      if (!nodeId) return;
-      if (!data || !data.length) return;
-
-      for (var i = 0; i < data.length; i++) {
-        var nodeData = data[i];
-
-        if (nodeData.id == nodeId) {
-          return nodeData;
-        }
-
-        if (!nodeData.children || !nodeData.children.length) continue;
-        
-        var result = this._findNodeById(nodeId, nodeData.children);
         if (result) return result;
       }
     }
