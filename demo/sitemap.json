@@ -5,12 +5,12 @@
         "id": "root1",
         "title": "First root",
         "link": "http://www.adenin.com",
-        "children": [
+        "items": [
           { 
             "id": "r1_child1_level1", 
             "title": "Child 1 at Level 1",
             "link": "http://www.google.com",
-            "children": [
+            "items": [
               {
                 "id": "r1_c1_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -32,7 +32,7 @@
             "id": "r1_child2_level1", 
             "title": "Child 2 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r1_c2_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -54,7 +54,7 @@
             "id": "r1_child3_level1", 
             "title": "Child 3 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r1_c3_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -78,12 +78,12 @@
         "id": "root2",
         "title": "Second root",
         "link": "",
-        "children": [
+        "items": [
           { 
             "id": "r2_child1_level1", 
             "title": "Child 1 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r2_c1_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -105,7 +105,7 @@
             "id": "r2_child2_level1", 
             "title": "Child 2 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r2_c2_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -127,7 +127,7 @@
             "id": "r2_child3_level1", 
             "title": "Child 3 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r2_c3_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -151,12 +151,12 @@
         "id": "root3",
         "title": "Third root",
         "link": "",
-        "children": [
+        "items": [
           { 
             "id": "r3_child1_level1", 
             "title": "Child 1 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r3_c1_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -178,7 +178,7 @@
             "id": "r3_child2_level1", 
             "title": "Child 2 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r3_c2_child1_level2", 
                 "title": "Child 1 at Level 2",
@@ -200,7 +200,7 @@
             "id": "r3_child3_level1", 
             "title": "Child 3 at Level 1",
             "link": "",
-            "children": [
+            "items": [
               {
                 "id": "r3_c3_child1_level2", 
                 "title": "Child 1 at Level 2",
