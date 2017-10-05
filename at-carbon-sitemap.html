@@ -79,9 +79,10 @@
           }
         }
 
-        if (!nodeData.children || !nodeData.children.length) continue;
+        var children = nodeData.items || nodeData.children;
+        if (!children || !children.length) continue;
         
-        var result = this._findSelectedNodeData(nodeData.children, currentUrl);
+        var result = this._findSelectedNodeData(children, currentUrl);
         if (result) return result;
       }
     }
